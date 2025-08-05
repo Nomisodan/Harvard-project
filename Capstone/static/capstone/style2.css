@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: url('../capstone/cave5.webp') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.media-container {
+    background: rgba(0,0,0,0.7);
+    border-radius: 2rem;
+    width: 350px;          
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 32px #000a;
+}
+        .media-placeholder {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tiktok-buttons {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .tiktok-btn {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .tiktok-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .tiktok-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            z-index: 100;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border: none;
+            border-radius: 1.5rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255,0,0,0.7);
+        }
+
+@media (max-width: 600px) {
+    body {
+        background: url('../capstone/cave5.webp') no-repeat center center !important;
+        background-size: 200% !important; 
+        background-position: center !important;
+        background-color: #000;
+    }
+
+    .media-container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: none;
+        box-shadow: none;
+    }
+}
