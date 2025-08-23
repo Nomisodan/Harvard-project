@@ -1,59 +1,87 @@
 ## Distinctiveness and Complexity
 
-For this project, I didn't really know what complexity meant in terms of a web app. So I went with the first thing that came to mind that looked complicated: a dynamic website, something that moves when scrolling through the page. I don’t know if this is complex for an experienced software engineer, but as someone who is learning, this was a challenge to accomplish.
+For this project, I didn’t fully know what “complexity” meant in terms of a web app. So I went with the first thing that came to mind that looked complicated: a dynamic website—something that moves when scrolling through the page.
 
-Building something that is front-end heavy using SCSS and JavaScript was hard because things were conflicting with each other. For example, if you do an opacity fade-in in CSS but have similar code in JavaScript, things can break. The elements also didn’t move the way I wanted, and it took me a while to figure everything out. I can't really compare it to others, but I think this was hard to accomplish based on the multiple page that conflict with each other rules.
+I decided to build a dynamic welcome page for a website idea similar to TikTok but for mini-games and riddles. Creating something front-end heavy with SCSS and JavaScript was challenging because styles and scripts often conflicted with each other.
+
+For example, if you use an opacity fade-in in CSS but also handle similar logic in JavaScript, things can break. I had to figure out how to implement parallax zoom scrolling, section fade-in/fade-out, animated navigation, carousel zoom sync, and sticky Register/Login forms.
+
+At first, the elements didn’t behave as I expected, and it took me a while to figure everything out. I can’t directly compare it to other projects, but I think this was complex to accomplish due to the multiple pages and functions that could easily conflict with one another.
+
+## Section Breakdown:
+
+**Navigation bar**
+
+Four different section that has a dot that follows your scrolling.
+
+**Intro**  
+It starts with a fade-in of the title “Speeme?” (like “Speed Game?”) and a cave entrance background.  
+When scrolling starts:
+- "Speeme?" zooms out as if you pass by it and disappears behind you.
+- The background zooms into the cave.
+- "Are you ready?" zooms and fades in from the darkness.
+
+**Explanation**
+“Are you ready?” fades out. A new background fades in, and from the bottom, a carousel with the explanation of the game snap-locks in the middle of the page.  
+ As users scroll through the carousel, the background zooms in, as if you were walking deeper into the cave while learning what the game is.
+
+**Register**  
+Once the carousel is finished, it detaches from the lock. The background keeps zooming in and fades out while the next background fades in.  
+At the bottom, the register form comes into view and snap-locks to the screen.
+
+If the user has to register, after completing it it'll beredirected to the main website.
+
+If already registered by scrolling a little more you get to the login section
+
+**Login**  
+
+The background from register zooms in and fades out, then login background fades in and tghe login form comes from the bottom to lock in the middle of the screen. When the user login he is directed to the main website.
+
+**Main website**
+
+This is just a template of the website but it is not the main focus of this project.
 
 ---
 
 ## The Files
 
-To start the project, I used `manage.py` to communicate with Django.
-
-I got a `db.sqlite3` database ready for later use.
-
-I created a `Project5` folder for `settings.py`, `urls.py`, and `wsgi.py`.
-
-I also made a folder called `Capstone`, which contains folders for `static`, `migrations`, and `templates`.
-
-Once the foundation was done, I started thinking about the concept of the website. I didn’t want to create the full app but just the **intro** of what the web app could be.
-
-So I thought of a simple idea for a site where you scroll through a game called **Speeme** (Speed/Game. Spee/me). Kind of like TikTok but for games. I created `index.html` and `style2.css` to represent what could be a future web app.
-
-I added a background (`cave5.webp`) that appears for users on devices other than phones.
-
-To introduce users to the web app, I needed to create an experience with transitions, a carousel, snap-lock forms and text, parallax zoom scrolling, etc. I wanted to tell a kind of story while scrolling through the website.
-
-The idea: we are arriving at the entrance of a cave that leads to the other side, where the world of Speeme is.
-
-So I started with `layout.html` and `style.scss`, which compiles to `style.css`. I also added a favicon with the letters “SP”.
-
-I made four sections: **Intro**, **Explanation**, **Register**, and **Login**. Each one represents a part of the cave.
-
-## Section Breakdown
-
-**Intro**  
-Starts with a fade-in of the title “Speeme?” (like “Speed Game?”) and a cave background (`cave3.jpg`).  
-When scrolling starts, `transition1.js` takes over. This is where the heart of the web app lives:
-- "Speeme?" zooms out as if you pass by it and disappears behind you.
-- The background zooms into the cave.
-- "Are you ready?" zooms and fades into the darkness.
-
-**Explanation**
-“Are you ready?” fades out. A new background (`cave2.jpg`) fades in, and from the bottom, a carousel with the explanation of the game snap-locks in the middle of the page.  
-I made `carousel.js` separate from `transition1.js` to keep it easier to manage.  
-As users scroll through the carousel, the background zooms in—like walking deeper into the cave while learning what the game is.
-
-**Register**  
-Once the carousel is finished, it detaches from the lock. The background keeps zooming in and fades out while `cave1.jpg` fades in.  
-At the bottom, the register form comes into view and snap-locks to the screen.
-
-Since there is a register and login, `models.py` is used to migrate data to the database.  
-`views.py` and `urls.py` are used to link to the index page.
-
-**Login**  
-If the user scrolls down a bit more, the background zooms in and fades out. Then `cave4.jpg` fades in with the exit and the login form.
-
+Project 5 Capstone/
+├── Capstone/
+│   ├── __pycache__/              # cache files (views, urls, models)
+│   ├── migrations/               # generated by Django
+│   │   ├── __pycache__/
+│   │   ├── __init__.py
+│   │   └── 0001_initial.py
+│   ├── static/
+│   │   ├── carousel.js           # carousel functions
+│   │   ├── transition1.js        # animations, parallax, sticky forms
+│   │   ├── style.scss            # SCSS styles
+│   │   ├── style.css             # compiled CSS
+│   │   ├── style.css.map         # SCSS map file
+│   │   ├── style2.css            # main site styles
+│   │   ├── cave1.jpg             # register background
+│   │   ├── cave2.jpg             # explanation background
+│   │   ├── cave3.jpg             # intro background
+│   │   ├── cave4.jpg             # login background
+│   │   ├── cave5.jpg             # main website background
+│   │   └── favicon-32x32.png
+│   ├── templates/
+│   │   ├── layout.html           # welcome page
+│   │   └── index.html            # main website
+│   ├── models.py                 # registration data
+│   ├── urls.py                   # Django routes
+│   └── views.py                  # handles registration/login
+│
+├── project5/
+│   ├── __pycache__/              # cache for settings, urls, wsgi
+│   ├── settings.py               # Django settings
+│   ├── urls.py                   # url patterns
+│   └── wsgi.py                   # server config
+│
+├── db.sqlite3                    # user database
+├── manage.py                     # Django utility
+└── README.md                     # this file
+  
 ---
 
 ## Running the App
@@ -62,3 +90,4 @@ To run this app, just start the server from the main directory:
 
 ```bash
 python manage.py runserver
+
