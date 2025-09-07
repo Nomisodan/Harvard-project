@@ -1,48 +1,43 @@
 ## Distinctiveness and Complexity
 
-For this project, I didn’t fully know what “complexity” meant in terms of a web app. So I went with the first thing that came to mind that looked complicated: a dynamic website—something that moves when scrolling through the page.
+When I first started this project, I wasn’t entirely sure how “complexity” was measured in terms of web applications. Many of the earlier projects in this course were centered around either data-driven features or social-driven features. I wanted to do something different and focus instead on creating a visually dynamic, interactive experience that integrates Django for authentication and state management while relying heavily on front-end logic for animations and transitions. This decision made my project distinct both in scope and in technical implementation.
 
-I decided to build a dynamic welcome page for a website idea similar to TikTok but for mini-games and riddles. Creating something front-end heavy with SCSS and JavaScript was challenging because styles and scripts often conflicted with each other.
+This project is not an e-commerce site because it does not involve listing, selling, or managing products, nor does it have a checkout or payment system. It is also not a social network because it does not center around user interaction, following, or sharing content between users. While the HTML structure includes placeholders that might resemble social elements, these do not connect to any social functionality in the backend. Instead, my application focuses on building a scroll-driven storytelling landing page that introduces the concept of a TikTok-like platform for mini-games and riddles. The emphasis is on using scrolling as the primary method of navigation and engagement, something not present in the standard web programming projects. This makes it stand out by combining front-end animation complexity with a Django-based authentication system. Creating something so front-end heavy with SCSS and JavaScript was challenging because styles and scripts often conflicted with one another.
 
-For example, if you use an opacity fade-in in CSS but also handle similar logic in JavaScript, things can break. I had to figure out how to implement parallax zoom scrolling, section fade-in/fade-out, animated navigation, carousel zoom sync, and sticky Register/Login forms.
+One example of this challenge came with handling opacity transitions. In my CSS file, I used opacity: 0 with a one-second transition for the initial state, which worked well for the intro. However, when I tried to control fade-out effects dynamically with JavaScript, the timing no longer matched the initial transitions. Managing opacity across both CSS and JavaScript required carefully synchronizing state and timing to avoid glitches. Beyond that, I implemented features such as parallax zoom scrolling, fade-in and fade-out transitions, sticky forms that snap into view, animated navigation dots, and a synchronized carousel explanation section. Ensuring that each section flowed seamlessly into the next while maintaining scroll-based control required significant experimentation, testing, and debugging.
 
-At first, the elements didn’t behave as I expected, and it took me a while to figure everything out. I can’t directly compare it to other projects, but I think this was complex to accomplish due to the multiple pages and functions that could easily conflict with one another.
+On the back end, I integrated Django models to handle user registration, login, and logout, which tie directly into the front-end flow. These features allow users to transition from the animated welcome page into the main website once authenticated. While the backend is not as elaborate as a multi-model e-commerce system, it still demonstrates the importance of securely handling user data and authentication. The fact that the backend interacts with a highly dynamic, JavaScript-driven interface adds complexity, since I had to ensure that Django’s server-side logic and the client-side animations worked together without breaking the user experience.
 
-## Section Breakdown:
+Finally, I ensured the site was mobile responsive by adding media queries and testing across different screen sizes. Animations, transitions, and layout adjustments adapt to smaller displays, ensuring the site remains functional and visually consistent on both desktop and mobile devices. Altogether, the combination of advanced front-end animation, Django integration, authentication flow, and mobile responsiveness creates a project that is both distinct from the course’s earlier projects and sufficiently complex to meet the final project requirements.
 
-**Navigation bar**
+## Section Breakdown
 
-Four different section that has a dot that follows your scrolling.
+## Navigation Bar
+The navigation bar contains four different sections, each represented by a dot that highlights dynamically as the user scrolls through the page. This animated navigation helps users track their position in the experience and adds to the immersive design.
 
-**Intro**  
-It starts with a fade-in of the title “Speeme?” (like “Speed Game?”) and a cave entrance background.  
-When scrolling starts:
-- "Speeme?" zooms out as if you pass by it and disappears behind you.
-- The background zooms into the cave.
-- "Are you ready?" zooms and fades in from the darkness.
+## Intro
+The welcome sequence begins with a fade-in of the title “Speeme?” (short for “Speed Game?”) set against the backdrop of a cave entrance. As scrolling begins:
 
-**Explanation**
-“Are you ready?” fades out. A new background fades in, and from the bottom, a carousel with the explanation of the game snap-locks in the middle of the page.  
- As users scroll through the carousel, the background zooms in, as if you were walking deeper into the cave while learning what the game is.
+The title “Speeme?” gradually zooms out, giving the impression that the viewer is moving past it into the cave.
 
-**Register**  
-Once the carousel is finished, it detaches from the lock. The background keeps zooming in and fades out while the next background fades in.  
-At the bottom, the register form comes into view and snap-locks to the screen.
+The cave background zooms forward, simulating movement into the environment.
 
-If the user has to register, after completing it it'll beredirected to the main website.
+A new phrase, “Are you ready?”, emerges from the darkness with a zoom-and-fade effect, setting the tone for the next section.
 
-If already registered by scrolling a little more you get to the login section
+## Explanation
+Once the intro fades out, a new background fades in, accompanied by a carousel that slides upward from the bottom of the page and locks into the center of the screen. This carousel contains the explanation of the game. As users scroll through the carousel slides, the background continues its zoom effect, reinforcing the illusion of traveling deeper into the cave while simultaneously learning about the platform’s concept.
 
-**Login**  
+## Register
+After the carousel is complete, it unlocks and scrolls away as the background transitions again. At this point, the registration form becomes visible and snaps into the center of the screen. Users who are new to the site can enter their details here, which are then stored in the Django database. Successful registration redirects them into the main portion of the website.
 
-The background from register zooms in and fades out, then login background fades in and tghe login form comes from the bottom to lock in the middle of the screen. When the user login he is directed to the main website.
+## Login
+For returning users, scrolling past the registration section reveals the login form. The registration background zooms and fades out, while a new login background fades in. The login form itself slides upward into the center of the screen and locks in place. Upon entering valid credentials, users are authenticated by Django and directed into the main site.
 
-**Main website**
+## Main Website (Template)
+The final section is a placeholder template of the main website. This is not the primary focus of the project but serves to demonstrate how the registration and login flow transition seamlessly into an authenticated user environment. It provides a clear endpoint to the animated introduction while showing how the backend and frontend components work together.
 
-This is just a template of the website but it is not the main focus of this project.
 
 ---
-
 ## The Files
 
 Project 5 Capstone/
@@ -80,14 +75,16 @@ Project 5 Capstone/
 │
 ├── db.sqlite3                    # user database
 ├── manage.py                     # Django utility
+├── requirements.txt              # dependencies (Django)
 └── README.md                     # this file
-  
 ---
 
 ## Running the App
 
-To run this app, just start the server from the main directory:
+pip install -r requirements.txt
 
-```bash
+python manage.py migrate
+
 python manage.py runserver
 
+Then open http://127.0.0.1:8000/ in your browser.
