@@ -1,0 +1,35 @@
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.container, .card, h1, h2, p, form {
+    margin-left: 0 !important; /* Remove any auto-centering margins */
+    margin-right: auto !important; /* Ensure content aligns to the left */
+}
+
+.card-text {
+    margin-bottom: 0; /* Remove the bottom margin from post content and timestamp */
+}
+
+.heart-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer; /* Add a pointer cursor for better UX */
+}
+
+.heart-button i {
+    color: red;
+    font-size: 1.2rem; /* Adjust size if needed */
+}
+
+/* Ensure buttons are aligned to the left */
+.card-body .mod {
+    margin-left: 0; /* Remove any left margin */
+    padding-left: 0; /* Remove any extra padding on the left */
+    display: inline-block; /* Ensure buttons are treated as inline elements */
+}
+
+

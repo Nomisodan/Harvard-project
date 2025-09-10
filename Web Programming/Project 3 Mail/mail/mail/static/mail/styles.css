@@ -1,0 +1,41 @@
+textarea {
+    min-height: 400px;
+}
+
+.email-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  .email-item.read {
+    background-color: #f1f1f1; /* Light gray */
+  }
+  
+  .email-item:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .email-status {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .email-status.read {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .email-status.unread {
+    background-color: #007bff;
+    color: #fff;
+  }
