@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speeme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Skranji:wght@400;700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="{% static 'capstone/style.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" href="{% static 'capstone/favicon-32x32.png' %}">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-indicator-dot"></div>
+        <ul class="nav-list">
+            <li><a href="#intro" class="nav-link">Intro</a></li>
+            <li><a href="#explanation" class="nav-link">Explanation</a></li>
+            <li><a href="#register" class="nav-link">Register</a></li>
+            <li><a href="#login" class="nav-link">Log in</a></li>
+        </ul>
+    </nav>
+    
+    <section id="intro" class="section section-intro">
+        <div id="intro-anchor" style="height:4rem;"></div>
+        <div class="parallax-bg">
+            <img src="{% static 'capstone/cave3.png' %}" alt="Cave Background" class="parallax-img" />
+            <div class="speeme-sign">speeme?</div>
+            <div class="ready-sign">Are you ready?</div>
+        </div>
+    </section>
+
+    <section id="explanation" class="section section-explanation">
+        <div class="parallax-bg-2">
+            <img src="{% static 'capstone/cave2.jpg' %}" alt="Cave2 Background" class="parallax-img-2" />
+        </div>
+        <div class="scroll-carousel">
+            <div class="carousel-track">
+            <div class="carousel-item">The term Speeme comes from speed game.</div>
+            <div class="carousel-item">All you gotta do <br> is solve the game <br> as fast as possible to get points.</div>
+            <div class="carousel-item">If you don't like it <br> or you don't know how to solve it <br> just pass.</div>
+            <div class="carousel-item">You could also create your own and let people try it out!</div>
+            <div class="carousel-item">When you're ready just register and have fun!</div>
+        </div>
+    </section>
+
+    <section id="register" class="section section-register">
+        <div class="parallax-bg-3">
+            <img src="{% static 'capstone/cave1.jpg' %}" alt="Cave1 Background" class="parallax-img-3" />
+        </div>        
+        <div class="section-content">
+            <div class="register-sticky">   
+                <h1>Register</h1>
+                    <form class="register-form" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="register" value="1">
+                        <input type="text" name="username" placeholder="Username" required /><br>
+                        <input type="email" name="email" placeholder="Email" required /><br>
+                        <input type="password" name="password" placeholder="Password" required /><br>
+                        <input type="password" name="confirmation" placeholder="Confirm Password" required /><br>
+                        <button type="submit">Register</button>
+                        {% if message %}<p style="color:red;">{{ message }}</p>{% endif %}
+                    </form>
+            </div>
+        </div>
+    </section>
+         
+
+<section id="login" class="section section-login">
+    <div class="parallax-bg-4">
+        <img src="{% static 'capstone/cave4.jpg' %}" alt="Cave4 Background" class="parallax-img-4" />
+    </div>
+    <div class="section-content">
+        <div class="login-sticky">
+            <h1>Login</h1>
+                <form class="login-form" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="login" value="1">
+                    <input type="text" name="username" placeholder="Username" required /><br>
+                    <input type="password" name="password" placeholder="Password" required /><br>
+                    <button type="submit">Login</button>
+                    {% if message %}<p style="color:red;">{{ message }}</p>{% endif %}
+                </form>
+        </div>    
+    </div>    
+</section>
+
+
+    <script src="{% static 'capstone/transition1.js' %}"></script>
+    <script src="{% static 'capstone/carousel.js' %}"></script>
+</body>
+</html>
